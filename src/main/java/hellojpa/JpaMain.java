@@ -2,6 +2,8 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 public class JpaMain {
 
     public static void main(String[] args) {
@@ -15,10 +17,14 @@ public class JpaMain {
 
         try{
             // code(데이터베이스 코드 작성하는곳)
-            Member findMember = em.find(Member.class, 1L);
-            findMember.setName("HelloJPA");
-
-            em.persist(findMember);
+          //  Member findMember = em.find(Member.class, 1L);
+            List<Member> result = em.createQuery("select m from Member as m", Member.class)
+                    .setFirstResult(5)
+                    .setMaxResults(8)
+                    .getResultList();
+            for (Member member : result){
+                System.out.println("memberList =" + member.getName());
+            }
 
             tx.commit();
         } catch (Exception e){
