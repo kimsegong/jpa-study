@@ -17,14 +17,10 @@ public class JpaMain {
 
         try{
             // code(데이터베이스 코드 작성하는곳)
-          //  Member findMember = em.find(Member.class, 1L);
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(5)
-                    .setMaxResults(8)
-                    .getResultList();
-            for (Member member : result){
-                System.out.println("memberList =" + member.getName());
-            }
+           Member member = em.find(Member.class, 150L);
+           member.setName("ZZZZZZ");
+
+            System.out.println("+++++++++++++++++++++++++++++++");
 
             tx.commit();
         } catch (Exception e){
