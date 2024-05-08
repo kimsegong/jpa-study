@@ -16,12 +16,11 @@ public class JpaMain {
         tx.begin();
 
         try{
-            // code(데이터베이스 코드 작성하는곳)
-          Member member = new Member(200L, "member200");
-          em.persist(member);
-          em.flush();
 
-          System.out.println("===================");
+          Member member = new Member();
+          member.setUsername("C");
+
+          em.persist(member);
           tx.commit();
         } catch (Exception e){
             tx.rollback();
