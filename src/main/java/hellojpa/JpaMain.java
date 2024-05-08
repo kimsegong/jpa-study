@@ -17,7 +17,7 @@ public class JpaMain {
 
         try{
             // code(데이터베이스 코드 작성하는곳)
-           Member member = new Member(200L, "member200");
+          Member member = new Member(200L, "member200");
           em.persist(member);
           em.flush();
 
