@@ -22,6 +22,10 @@ public class Member {
     @ManyToOne
     private Team team;
 
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
     public void changeTeam(Team team){
         this.team = team;
         team.getMembers().add(this);
