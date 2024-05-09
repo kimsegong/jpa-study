@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Data
-public class Team {
+public class Team extends BaseEntity {
 
     @Id @GeneratedValue
     @Column(name="TEAM_ID")
