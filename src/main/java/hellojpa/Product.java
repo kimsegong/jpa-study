@@ -18,8 +18,7 @@ public class Product {
     private Long id;
 
     private String name;
-
-    @OneToMany(mappedBy = "product")
-    private List<MemberProduct> memberProducts = new ArrayList<>();
+    private int price;
+    private int stockAmount;
 
 }

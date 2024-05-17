@@ -17,21 +17,17 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Member member1 = new Member();
-            member1.setUsername("안녕1");
-            em.persist(member1);
 
-            Member member2 = new Member();
-            member2.setUsername("안녕2");
-            em.persist(member2);
+            Member member = new Member();
+            member.setUsername("member1");
+            member.setAge(10);
+            em.persist(member);
 
-            em.flush();
-            em.clear();
-           Member m1 = em.find(Member.class, member1.getId());
-           Member m2 = em.getReference(Member.class, member2.getId());
+            TypedQuery<Member> query = em.createQuery("select m from Member m where m.username = :username", Member.class);
+            query.setParameter("username", "member1");
+            Member singleResult = query.getSingleResult();
+            System.out.println("singleResult = " + singleResult.getUsername());
 
-           System.out.println("m1 == m2 :" + (m1 instanceof Member) + m1);
-            System.out.println("m1 == m2 :" + (m2 instanceof Member) + m2);
 
 
             tx.commit();
@@ -44,10 +40,5 @@ public class JpaMain {
 
         emf.close();
     }
-
-    private static void printMember(Member member) {
-        System.out.println("member =" + member.getUsername());
-    }
-
 
 }

@@ -10,13 +10,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Data
-public class Member extends BaseEntity{
+public class Member{
 
     @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
     @Column(name = "USERNAME")
     private String username;
+    private int age;
     @JoinColumn(name = "TEAM_ID")
     @ManyToOne
     private Team team;
